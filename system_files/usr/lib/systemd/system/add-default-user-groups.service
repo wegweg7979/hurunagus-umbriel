@@ -1,0 +1,13 @@
+[Unit]
+Description=Add standard device groups to human users on first boot
+After=systemd-sysusers.service
+Before=systemd-user-sessions.service
+ConditionPathExists=!/var/lib/.user-groups-initialized
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/add-default-user-groups.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

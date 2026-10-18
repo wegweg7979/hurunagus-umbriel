@@ -1,0 +1,13 @@
+[Unit]
+Description=Install system flatpaks listed in /usr/share/ublue-os/flatpaks/system-flatpaks.list
+After=network-online.target flatpak-add-flathub-repos.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/install-system-flatpaks.sh
+TimeoutStartSec=1800
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
