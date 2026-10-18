@@ -2,7 +2,7 @@
 
 <img width="400" height="418" alt="hurunagus-logo" src="https://github.com/user-attachments/assets/9fd35c36-06b1-4b77-8160-c663de0a53a9" />
 
-Declarative, Atomic, immutable linux system. Fedora 44 base, from ublue, with customisation including WM Umbriel with Noctalia shell, with automatic weekly updates and all the apps i need preinstalled.
+Declarative, Atomic, immutable linux system. Fedora 44 base, from ublue, with customisation including WM Niri with Noctalia shell, with automatic weekly updates and all the apps i need preinstalled.
 
 Reason to exist: making all my computers run identical systems,  administered  in one place, this repo.
 Automatic builds once a week on a tuesday.
@@ -34,12 +34,14 @@ OR: To rebase an existing atomic Fedora installation (tested from bluefin and si
   systemctl reboot
   ```
 
-Umbriel + Noctalia
+Niri + Noctalia
 <img width="1919" height="1080" alt="Screenshot from 2026-10-15 13-47-33" src="https://github.com/user-attachments/assets/e17ba482-ccbf-4bab-a2f1-5fbeda7e0700" />
-(older screenshot, still showing the previous Niri + DMS desktop — will be replaced with an Umbriel + Noctalia one)
+(older screenshot, still showing the previous Niri + DMS desktop — will be replaced with a Niri + Noctalia one)
 
 
 <p align="center">
+  <img width="263" height="144" alt="niri-logo" src="https://github.com/user-attachments/assets/79785a38-7bd2-40a4-824b-6cc76ef2521e" />
+
   <img width="263" height="75" alt="fedora_darkbackground" src="https://github.com/user-attachments/assets/0dd3975d-16ac-46a6-a14e-d167bdd74281" />
 </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>

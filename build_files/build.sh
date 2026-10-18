@@ -13,13 +13,13 @@ cp -avf "/ctx/system_files"/. /
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y btop fastfetch foot greetd khal adwaita-fonts-all igt-gpu-tools nautilus firefox lm_sensors cups-pk-helper fprintd kf6-kimageformats noctalia tuned-ppd xorg-x11-server-Xwayland
+dnf5 install -y btop fastfetch niri foot greetd khal adwaita-fonts-all igt-gpu-tools nautilus firefox lm_sensors cups-pk-helper fprintd kf6-kimageformats noctalia tuned-ppd xorg-x11-server-Xwayland
 
-# Terra repo provides the Umbriel compositor, its xdg portal backend, and the
-# greetd greeter. Enable, install, then disable so it doesn't end up enabled
-# on the final image (packages will be pinned to build-time versions).
+# Terra repo provides the greetd greeter. Enable, install, then disable so it
+# doesn't end up enabled on the final image (packages will be pinned to
+# build-time versions).
 dnf5 -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release terra-gpg-keys
-dnf5 -y install umbriel-nightly xdg-desktop-portal-umbriel-nightly noctalia-greeter
+dnf5 -y install noctalia-greeter
 sed -i 's/^enabled=1/enabled=0/' /etc/yum.repos.d/terra*.repo
 
 # Point greetd at the Noctalia greeter session. The greeter package configures
