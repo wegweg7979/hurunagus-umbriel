@@ -1,0 +1,31 @@
+#!/bin/bash
+set -euo pipefail
+
+# Repair /etc/greetd/config.toml when it points at a greeter that is no longer
+# installed (seen when rebasing from the old image, where /etc three-way merge
+# kept the dms-greeter configuration while the package itself is gone).
+
+CONFIG=/etc/greetd/config.toml
+WANTED=/usr/bin/noctalia-greeter-session
+
+[ -x "$WANTED" ] || exit 0
+
+if [ -f "$CONFIG" ]; then
+    cmd=$(sed -n 's/^[[:space:]]*command[[:space:]]*=[[:space:]]*"\(.*\)".*/\1/p' "$CONFIG" | head -n1)
+    bin=${cmd%% *}
+    if [ -n "$bin" ] && command -v "$bin" >/dev/null 2>&1; then
+        exit 0
+    fi
+fi
+
+mkdir -p /etc/greetd
+cat > "$CONFIG" <<'EOF'
+[terminal]
+vt = 1
+
+[default_session]
+command = "/usr/bin/noctalia-greeter-session"
+user = "greeter"
+EOF
+
+echo "greetd config repaired: now launching $WANTED"

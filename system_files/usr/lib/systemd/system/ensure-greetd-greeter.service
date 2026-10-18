@@ -1,0 +1,11 @@
+[Unit]
+Description=Repair greetd config if the configured greeter is missing
+Before=greetd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/ensure-greetd-greeter
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -23,7 +23,7 @@ Wayland compositor) and **Noctalia v5** (its companion shell), swap dms-greeter 
 - `noctalia`, `tuned-ppd` → **Fedora 44 default repos**
 - Xwayland binary: `xorg-x11-server-Xwayland` (Fedora) — Umbriel's wlroots Xwayland needs it on PATH
 - Umbriel config search order includes `$XDG_CONFIG_DIRS` → a system-wide
-  `/etc/umbriel/config.toml` works (no `-c` flag needed)
+  `/etc/xdg/umbriel/config.toml` works (no `-c` flag needed; XDG_CONFIG_DIRS defaults to /etc/xdg)
 - Umbriel sessions start via `start-umbriel` (installed by the package, ships a
   wayland-sessions entry that greetd greeters pick up)
 
@@ -52,11 +52,11 @@ Wayland compositor) and **Noctalia v5** (its companion shell), swap dms-greeter 
   manages its own state dir; no extra services to enable (Noctalia runs as a user
   process autostarted by Umbriel).
 
-### 2. `system_files/etc/niri/` → `system_files/etc/umbriel/`
+### 2. `system_files/etc/niri/` → `system_files/etc/xdg/umbriel/`
 
 - **Delete** the entire `system_files/etc/niri/` directory (config.kdl + `dms/`
   fragments — all niri/DMS-specific, including both `settings.json` copies of DMS keys).
-- **Create** `system_files/etc/umbriel/config.toml` porting the *active* settings
+- **Create** `system_files/etc/xdg/umbriel/config.toml` porting the *active* settings
   from the old `config.kdl`, following Umbriel's example config and the official
   Noctalia↔Umbriel integration guide
   (https://docs.noctalia.dev/umbriel + /noctalia/compositor-settings/umbriel/):
@@ -260,7 +260,7 @@ dirs (`usr/share/backgrounds/hurunagus`, `hurunagus-treasure`, background XMLs).
 ## Implementation order
 
 1. `build_files/build.sh` — package + repo changes
-2. Delete `system_files/etc/niri/`, write `system_files/etc/umbriel/config.toml`
+2. Delete `system_files/etc/niri/`, write `system_files/etc/xdg/umbriel/config.toml`
 3. greetd config + remove `greetd-portal.conf`
 4. Rename in `image-template.env`, `Containerfile`, `README.md`, `disk_config/*.toml`
 5. Verify (below)
